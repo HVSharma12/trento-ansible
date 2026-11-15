@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 ---
-agent_host_pre_16: "{{ ansible_distribution_version is version('15.7', '<=') | bool }}"
-agent_host_post_16: "{{ ansible_distribution_version is version('16.0', '>=') | bool }}"
+agent_host_pre_16: "{{ ansible_facts.distribution_version is version('15.7', '<=') | bool }}"
+agent_host_post_16: "{{ ansible_facts.distribution_version is version('16.0', '>=') | bool }}"
 agent_resolved_prometheus_mode: "{{ agent_prometheus_mode | default(agent_host_pre_16 | ternary('pull', 'push'), true) }}"
 agent_prometheus_mode_pull: "{{ agent_resolved_prometheus_mode == 'pull' }}"
 agent_prometheus_mode_push: "{{ agent_resolved_prometheus_mode == 'push' }}"

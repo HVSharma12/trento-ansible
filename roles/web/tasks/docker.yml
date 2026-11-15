@@ -26,7 +26,7 @@
       # noqa: command-instead-of-module
       ansible.builtin.shell: |
         set -o pipefail
-        rpm -qf {{ ansible_python.executable }} | grep -E -o 'python3[[:digit:]]{0,2}'
+        rpm -qf {{ ansible_facts.python.executable }} | grep -E -o 'python3[[:digit:]]{0,2}'
       register: __web_python_prefix_result
       changed_when: false
 

@@ -8,5 +8,5 @@
     name: "{{ supportutils_plugin_package_name }}"
     state: absent
   when:
-    - ansible_distribution == "SLES_SAP"
-    - ansible_distribution_version is version('15.5', '>=')
+    - ansible_facts.distribution == "SLES_SAP"
+    - ansible_facts.distribution_version is version('15.5', '>=')

@@ -62,7 +62,7 @@
   become: true
   ansible.builtin.get_url:
     url: "https://github.com/kubevirt/kubevirt/releases/download/{{ kubevirt_version }}/virtctl-{{ kubevirt_version }}-linux-\
-          {{ ansible_architecture | replace('x86_64', 'amd64') }}"
+          {{ ansible_facts.architecture | replace('x86_64', 'amd64') }}"
     dest: /usr/local/bin/virtctl
     mode: "+x"
   tags:

@@ -7,7 +7,7 @@
   ansible.builtin.group:
     name: prometheus
     system: true
-  when: ansible_distribution_version >= "15.4"
+  when: ansible_facts.distribution_version >= "15.4"
 
 - name: Create Prometheus system user
   ansible.builtin.user:
@@ -16,7 +16,7 @@
     group: prometheus
     shell: /sbin/nologin
     comment: "User for Prometheus service"
-  when: ansible_distribution_version >= "15.4"
+  when: ansible_facts.distribution_version >= "15.4"
 
 - name: Install Prometheus package
   ansible.builtin.package:
